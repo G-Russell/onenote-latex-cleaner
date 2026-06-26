@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LaTeX Note Cleaner</title>
+    <link rel="stylesheet" href="./taskpane.css">
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <script>
+      window.MathJax = {
+        startup: { typeset: false },
+        tex: {
+          packages: { "[+]": ["ams", "noerrors", "noundefined"] },
+          inlineMath: [["\\(", "\\)"]],
+          displayMath: [["\\[", "\\]"], ["$$", "$$"]]
+        },
+        svg: { fontCache: "none" }
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script defer src="./taskpane.js"></script>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <h1>LaTeX Note Cleaner</h1>
+          <p id="hostState">Loading</p>
+        </div>
+        <button id="sampleButton" class="icon-button" type="button" title="Load sample" aria-label="Load sample">
+          <span aria-hidden="true">fx</span>
+        </button>
+      </header>
+
+      <section class="input-band" aria-label="Source note">
+        <label for="sourceText">Source</label>
+        <textarea id="sourceText" spellcheck="false"></textarea>
+        <div class="toolbar">
+          <button id="renderButton" type="button">Preview</button>
+          <button id="insertButton" type="button" disabled>Insert</button>
+          <button id="copyButton" type="button">Copy HTML</button>
+          <button id="clearButton" class="secondary" type="button">Clear</button>
+        </div>
+      </section>
+
+      <section class="output-band" aria-label="Preview">
+        <div class="preview-header">
+          <label>Preview</label>
+          <span id="statusText" role="status">Ready</span>
+        </div>
+        <div id="preview" class="note-preview"></div>
+      </section>
+    </main>
+  </body>
+</html>
